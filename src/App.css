@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.main{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.weather-card{
+  display:flex;
+  justify-content: space-between;
+}
+
+.app-header{
+  font-size: 25px;
+  font-family: Poppins;
+  margin: 20px
+}
+.weather-card-child{
+  font-family: Poppins !important;
+}
+
+.icon-container{
+  position: relative;
+  right: -75px
+}
+
+.weather-card-main{
+  width: 350px !important;
+}
