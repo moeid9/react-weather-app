@@ -3,6 +3,7 @@ import { useEffect , useState } from 'react';
 import './App.css';
 import Header from './components/header';
 import WeatherCard from './components/weatherCard';
+import Forecast from './components/forecast';
 
 const URL = `https://api.openweathermap.org/data/3.0/onecall`;
 const API_KEY = `94b99d4e2b4ad32bc3ad2a92fd802c7e`
@@ -15,7 +16,8 @@ function App() {
   const [humidity, setHumidity] = useState(null);
   const [sunrise, setSunrise] = useState(null);
   const [sunset, setSunset] = useState(null);
-
+  const [icon, setIcon] = useState('');
+  const [forecast, setForecast] = useState([])
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -31,7 +33,8 @@ function App() {
       setSunrise(weatherData.data.current.sunrise)
       setHumidity(weatherData.data.current.humidity)
       setCity(weatherData.data.timezone)
-  
+      setIcon(weatherData.data.current.weather[0].main)
+      setForecast(weatherData.data.daily)
     })
     .catch((error) => {
       console.error('Error fetching data:', error);
@@ -46,8 +49,9 @@ function App() {
       sunset={sunset}
       humidity={humidity}
       city={city}
-
+      icon={icon}
      />
+     <Forecast forecast={forecast}/>
     </div>
   );
 }
